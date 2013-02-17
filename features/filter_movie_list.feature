@@ -34,7 +34,11 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I should not see the following movies: Alladin, The Help, Chocolat, 2001: A Space Odyssey, Chicken Run
 
 Scenario: no ratings selected
-  # see assignment
+  When I uncheck the following ratings: PG-13, G, R, PG
+  And I press "Refresh"
+  Then I should see no movies
 
 Scenario: all ratings selected
-  # see assignment
+  When I check the following ratings: PG-13, G, R, PG
+  And I press "Refresh"
+  Then I should see all of the movies
